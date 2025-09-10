@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="ulock.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.58086577"
+     inkscape:cx="597.38414"
+     inkscape:cy="539.71161"
+     inkscape:window-width="1804"
+     inkscape:window-height="1014"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="23.129317"
+       y="303.11579"
+       width="742.57282"
+       height="527.10497"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text1"
+       style="fill:#000000;text-orientation:auto;font-size:192px;-inkscape-font-specification:'Bebas Neue, @opsz=32,wght=700';font-family:'Bebas Neue';font-variation-settings:'opsz' 32, 'wght' 700;stroke-width:1.00157;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:84.007px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue, @opsz=32,wght=700';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'opsz' 32, 'wght' 700;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke-width:0.438224"
+       x="31.814095"
+       y="129.7995"
+       id="text2"
+       transform="scale(1.041141,0.96048473)"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.438226"
+         x="31.814095"
+         y="129.7995"
+         id="tspan3">ULOCK</tspan></text>
+    <rect
+       style="font-variation-settings:'opsz' 32, 'wght' 700;fill:#000000;fill-opacity:1;stroke-width:0.536372"
+       id="rect7"
+       width="37.028961"
+       height="9.1202507"
+       x="37.495308"
+       y="68.191391" />
+  </g>
+</svg>
