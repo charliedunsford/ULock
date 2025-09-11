@@ -15,6 +15,25 @@ body {
 	flex-direction: column;
 }
 
+.container-s {
+	height: 95vh;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.signup-form {
+	flex: 1;
+	min-height: 40rem;
+	max-width: 40rem;
+	background-color: #fafafa;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	padding: 20px;
+}
+
 header {
 	background-color: #fafafa;
 	display: flex;
@@ -25,11 +44,15 @@ header {
 	padding: 0 24px;
 }
 
+svg {
+	fill: #240046;
+}
+
 .header-text {
 	font-weight: 800;
 	text-decoration: none;
 	font-size: 20px;
-	color: black;
+	color: #240046;
 }
 
 .signin {
@@ -81,4 +104,8 @@ main {
 footer {
 	background-color: #fafafa;
 	height: 10rem;
+}
+
+.signup-form {
+
 }
