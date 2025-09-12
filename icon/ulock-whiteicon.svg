@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 122.7907 63.000001"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="ulock-whiteicon.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="6.9661472"
+     inkscape:cx="46.295318"
+     inkscape:cy="32.657938"
+     inkscape:window-width="1804"
+     inkscape:window-height="1014"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="layer2"
+     transform="translate(-1.1921512,-1.7305728)">
+    <path
+       id="text14"
+       style="font-size:48.5643px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue, Normal';fill:#f9f9f9;stroke-width:0.770018"
+       d="M 86.035719,-21.655855 13.837302,-6.6021533 18.849557,7.3086721 27.588244,5.8401291 52.131304,71.99169 c 2.610804,7.040076 6.871805,11.921049 12.794416,14.649677 5.891898,2.645807 13.129487,2.93739 21.719403,0.877784 8.589914,-2.059605 14.459357,-5.486502 17.586867,-10.294896 3.09681,-4.891218 3.33275,-10.856915 0.72196,-17.896991 L 80.925493,-5.4906843 90.279407,-7.7326208 Z M 63.687576,-1.8327478 88.25324,64.407894 c 1.105755,2.98168 1.102234,5.333057 -0.01693,7.044424 -1.011789,1.685624 -2.977673,2.872689 -5.876771,3.567802 -2.899097,0.695121 -5.393271,0.578734 -7.495324,-0.36028 -1.994679,-0.964762 -3.542692,-2.946686 -4.648442,-5.928365 L 45.488424,2.0372801 Z"
+       sodipodi:nodetypes="ccccccsccccccccscccc" />
+  </g>
+</svg>
