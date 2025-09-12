@@ -4,7 +4,7 @@
 }
 
 body {
-	background-color: #dfdfdf;
+	background-color: #161616;
 	font-family: sans-serif;
 }
 
@@ -15,7 +15,7 @@ main {
 }
 
 #left {
-	background-color: #fafafa;
+	background-color: #1d1d21;
 	flex: 1 1 auto;
 	min-width: 20%;
 	border-radius: 50px;
@@ -37,7 +37,7 @@ main {
 
 .item {
 	flex: 0 0 auto;
-	background-color: #fafafa;
+	background-color: #1d1d21;
 	border-radius: 9999px;
 	min-height: 80px;
 }

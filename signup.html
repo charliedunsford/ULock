@@ -13,12 +13,23 @@
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<main>
-			<div class="center height">
-				<div class="signup-form">
-					<a class="header__link header__link--animated" href="vault.html">Sign Up</a>
+		<main class="main--wrapper-signup">
+			<form action="vault.html" class="signup__form">
+				<div>
+					<h1 class="signup__text--large">Sign up</h1>
+					<p class="signup__text">Create an account or <a href="">Sign In</a></p>
 				</div>
-			</div>
+				<div class="field--wrapper">
+					<label class="signup__text" for="name">Full name</label>
+					<input class="signup__input" type="text" id="name" name="name" required>
+					<label class="signup__text" for="username">Username</label>
+					<input class="signup__input" type="text" id="username" name="username" required>
+					<label class="signup__text" for="password">Password</label>
+					<input class="signup__input" type="password" id="password" name="password" required>
+				</div>
+				<button type="submit" class="header__link header__link--fancy">Sign Up</button>
+				<p class="footer__text--center">By signing up to create an account, you are accepting our terms of service and privacy policy</p>
+			</form>
 		</main>
 	</body>
 </html>
