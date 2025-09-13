@@ -15,6 +15,7 @@ ULock utilizes v1.0.0 of [Conventional Commits](https://www.conventionalcommits.
 
 landing-page | the home page of the website\
 auth-page | the user sign up and log in page\
+vault-page | the page where passwords are kept\
 readme | the text file detailing project specifications
 
 ### Vocabulary

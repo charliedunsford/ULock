@@ -6,6 +6,8 @@
 body {
 	background-color: #161616;
 	font-family: "Montserrat", sans-serif;
+	scrollbar-color: #555 transparent;
+	scrollbar-width: thin;
 }
 
 main {
@@ -97,4 +99,21 @@ main {
 	background-color: #1d1d21;
 	border-radius: 9999px;
 	min-height: 80px;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #555;
+	border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #666;
 }
