@@ -4,13 +4,12 @@
 }
 
 body {
-	height: 100%;
+	height: 100vh;
 	background-color: #dfdfdf;
 	font-family: "Montserrat", sans-serif;
 }
 
 .body--onepage {
-	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 }
@@ -21,8 +20,8 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 9999px;
-	margin: 20px 60px;
-	padding: 0 24px;
+	margin: 1% 4rem;
+	padding: 0 1.5rem;
 }
 
 svg {
@@ -32,13 +31,13 @@ svg {
 .header__link {
 	font-weight: 600;
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 1rem;
 	color: #240046;
 }
 
 .header__link--animated {
-	transition: color 0.2s ease-out;
-	margin-right: 20px;
+	transition: color 0.3s ease-out;
+	margin-right: 1.5rem;
 }
 
 .header__link--animated:hover {
@@ -49,7 +48,7 @@ svg {
 	border-radius: 9999px;
 	border: none;
 	color: white;
-	padding: 10px 20px;
+	padding: 0.8rem 1.5rem;
 	background: linear-gradient(120deg, #623CEA, purple);
 	background-size: 200% 200%;
 	background-position: left center;
@@ -70,8 +69,8 @@ svg {
 .hero__text {
 	font-weight: 450;
 	text-align: center;
-	margin: 60px 15rem;
-	font-size: 34px;
+	margin: 3rem 15rem;
+	font-size: 2.5rem;
 	color: #251752;
 }
 
@@ -80,8 +79,8 @@ svg {
 	flex: 1;
 	justify-content: center;
 	align-items: center;
-	gap: 40px;
-	margin: 20px 60px;
+	gap: 4rem;
+	margin: 2rem 6rem;
 }
 
 .display__item {
@@ -90,11 +89,11 @@ svg {
 	border: 3px solid #fafafa;
 	flex: 0 0 auto;
 	width: 45%;
-	height: 50vh;
-	transition: background-color 0.3s ease-out, padding 0.3s ease-out;
+	height: 100%;
+	transition: background-color 0.3s ease-out, transform 0.3s ease;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: center;
 	overflow: hidden;
 	gap: 2rem;
@@ -102,21 +101,21 @@ svg {
 
 .display__item:hover {
 	background-color: #e0e0e0;
-	padding: 10px;
+	transform: scale(1.05);
 }
 
 .display__text {
-	font-size: 30px;
+	font-size: 2rem;
 	font-weight: 450;
 	text-align: center;
-	margin: 30px;
 	color: #251752;
+	padding: 0 1rem 1rem 1rem;
 }	
 
 footer {
 	background-color: #fafafa;
-	height: 8rem;
-	padding: 1rem 60px;
+	height: 10%;
+	padding: 1rem 6rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -130,9 +129,10 @@ footer {
 
 .footer__link {
 	text-decoration: none;
-	padding-right: 20px;
+	padding-right: 2rem;
 	font-weight: 450;
 	color: black;
+	font-size: 1rem;
 }
 
 .footer__link:hover {
@@ -143,6 +143,7 @@ footer {
 	text-align: center;
 	padding: 0;
 	font-weight: 400;
+	font-size: 1rem;
 }
 
 /* ------------------ auth form starts here ------------------- */
@@ -151,7 +152,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	display: flex;
-	height: 95vh;
+	height: 100vh;
 }
 
 .auth__form {
@@ -163,7 +164,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 60px;
+	padding: 5rem;
 }
 
 .auth__form.hidden {
@@ -172,15 +173,15 @@ footer {
 
 .auth__text {
 	text-decoration: none;
-	font-size: 18px;
+	font-size: 1rem;
 	font-weight: 500;
 	color: black;
 }
 
 .auth__text--large {
 	font-weight: 450;
-	font-size: 48px;
-	margin-bottom: 10px;
+	font-size: 3rem;
+	margin-bottom: 1rem;
 }
 
 .field--wrapper {
@@ -190,9 +191,9 @@ footer {
 
 .auth__input {
 	height: 4rem;
-	margin: 20px 0;
+	margin: 1.5rem 0;
 	border: 1px solid grey;
 	border-radius: 20px;
-	font-size: 20px;
-	padding: 0 20px;
+	font-size: 1rem;
+	padding: 0 2rem;
 }
