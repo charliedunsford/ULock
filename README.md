@@ -13,8 +13,8 @@ ULock utilizes v1.0.0 of [Conventional Commits](https://www.conventionalcommits.
 
 ### Common Scopes
 
-home-page | the initial landing page\
-signup-page | the user sign up page\
+landing-page | the home page of the website\
+auth-page | the user sign up and log in page\
 readme | the text file detailing project specifications
 
 ### Vocabulary
