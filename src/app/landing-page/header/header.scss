@@ -37,11 +37,13 @@ svg {
 		border-radius: 9999px;
 		margin: 1% 4rem;
 		padding: 0 1.5rem;
+		height: 3.8rem;
 	}
 
 	.header__link {
 		font-weight: 600;
 		text-decoration: none;
+		font-size: 1rem;
 		//color: #240046;
 	}
 
@@ -57,7 +59,7 @@ svg {
 	.header__link--fancy {
 		border-radius: 9999px;
 		color: #FAFAF7;
-		padding: 0.8rem 1.5rem;
+		padding: 0.6rem 1.2rem;
 		background: linear-gradient(120deg, #623CEA, purple);
 		background-size: 200% 200%;
 		background-position: left center;
