@@ -1,0 +1,16 @@
+<form action="vault.html" id="signup__form" class="auth__form">
+	<div>
+		<h1 class="auth__text--large">Sign up</h1>
+		<p class="auth__text">Create an account or <a [routerLink]="['/auth']" [queryParams]="{ form: 'signin' }">Sign In</a></p>
+	</div>
+	<div class="field--wrapper">
+		<label class="auth__text" for="name">Full name</label>
+		<input class="auth__input" type="text" id="name" name="name" required>
+		<label class="auth__text" for="username">Username</label>
+		<input class="auth__input" type="text" id="username" name="username" required>
+		<label class="auth__text" for="password">Password</label>
+		<input class="auth__input" type="password" id="password" name="password" required>
+	</div>
+	<button type="submit" class="header__link header__link--fancy">Sign Up</button>
+	<p class="footer__text--center">By signing up to create an account, you are accepting our <a href=#>terms of service</a> and <a href=#>privacy policy</a></p>
+</form>

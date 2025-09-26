@@ -1,1 +1,7 @@
-<p>auth-page works!</p>
+<main>
+    @if (formType == 'signin') {
+        <app-signin></app-signin>
+    } @else if(formType == 'signup') {
+        <app-signup></app-signup>
+    }
+</main>

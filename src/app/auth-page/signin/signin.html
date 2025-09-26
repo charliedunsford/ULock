@@ -1,0 +1,13 @@
+<form action="vault.html" id="signin__form" class="auth__form hidden">
+	<div>
+		<h1 class="auth__text--large">Sign in</h1>
+		<p class="auth__text">Sign in or <a [routerLink]="['/auth']" [queryParams]="{ form: 'signup' }">create an account</a></p>
+	</div>
+	<div class="field--wrapper">
+		<label class="auth__text" for="username">Username</label>
+		<input class="auth__input" type="text" id="username" name="username" required>
+		<label class="auth__text" for="password">Password</label>
+		<input class="auth__input" type="password" id="password" name="password" required>
+	</div>
+	<button type="submit" class="header__link header__link--fancy">Sign In</button>
+</form>

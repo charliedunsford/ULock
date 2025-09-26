@@ -1,0 +1,39 @@
+.auth__form {
+	flex: 0 0 auto;
+	height: 40rem;
+	width: 40rem;
+	background-color: #fafafa;
+	border-radius: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 5rem;
+}
+
+
+.auth__text {
+	text-decoration: none;
+	font-size: 1rem;
+	font-weight: 500;
+	color: black;
+}
+
+.auth__text--large {
+	font-weight: 450;
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.field--wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.auth__input {
+	height: 4rem;
+	margin: 1.5rem 0;
+	border: 1px solid grey;
+	border-radius: 20px;
+	font-size: 1rem;
+	padding: 0 2rem;
+}
