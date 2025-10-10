@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +8,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.scss'
 })
 export class Header {
+  constructor(private router: Router) {}
 
+  goToAuth(formType: 'signin' | 'signup') {
+    this.router.navigate(['/auth'], { queryParams: { form: formType } });
+  }
 }

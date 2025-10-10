@@ -15,7 +15,7 @@
     	</svg>
     </div>
     <div>
-    	<a [routerLink]="['/auth']" [queryParams]="{ form: 'signin' }" class="header__link--animated header__link">Sign in</a>
-    	<a [routerLink]="['/auth']" [queryParams]="{ form: 'signup' }" class="header__link--fancy header__link">Get started now</a>
+    	<a (click)="goToAuth('signin')" class="header__link--animated header__link">Sign in</a>
+    	<a (click)="goToAuth('signup')" class="header__link--fancy header__link">Get started now</a>
     </div>
 </header>

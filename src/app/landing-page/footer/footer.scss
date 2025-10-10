@@ -10,7 +10,7 @@
 
 @media (max-width: 899px) {
 	footer {
-		background-color: #FAFAF7;
+		background-color: var(--primary-color);
 		padding: 0.6rem 1rem;
 	}
 
@@ -33,7 +33,7 @@
 
 @media (min-width: 900px) {
 	footer {
-		background-color: #FAFAF7;
+		background-color: var(--primary-color);
 		padding: 0.2rem 4rem;
 	}
 

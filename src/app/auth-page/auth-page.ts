@@ -1,25 +1,50 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Signin } from "./signin/signin";
-import { Signup } from "./signup/signup";
-import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-page',
-  imports: [Signin, Signup, CommonModule],
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './auth-page.html',
-  styleUrl: './auth-page.scss'
+  styleUrls: ['./auth-page.scss']
 })
 export class AuthPage {
-  formType: 'signin' | 'signup' = 'signin';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router, private titleService: Title) {
+    this.titleService.setTitle('Auth | ULock');
     this.route.queryParams.subscribe(params => {
       this.formType = params['form'] === 'signup' ? 'signup' : 'signin';
     });
   }
 
-  submitSignup(name: string, username: string, password: string) {
-    console.log('Form submitted:', { name, username, password });
+  formType: 'signin' | 'signup' = 'signin';
+
+  signinForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl('')
+  });
+
+  signupForm = new FormGroup({
+    name: new FormControl(''),
+    username: new FormControl(''),
+    password: new FormControl('')
+  });
+
+  toggleForm(type: 'signin' | 'signup') {
+    this.formType = type;
+  }
+
+  onSigninSubmit() {
+    console.log('Signin', this.signinForm.value);
+    this.router.navigate(['/vault'], {
+    });
+  }
+
+  onSignupSubmit() {
+    console.log('Signup', this.signupForm.value);
+    this.router.navigate(['/vault'], {
+    });
   }
 }
