@@ -1,0 +1,54 @@
+.profile__div {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	padding: 1rem 0;
+	border-bottom: 3px solid #DEDCD8;
+	border-top: 3px solid #DEDCD8;
+	border-radius: 20px;
+}
+
+.profile__img {
+	width: 48px;
+	height: 48px;
+	border: 2px solid #DEDCD8;
+	background-color: #DEDCD8;
+	margin-left: 1rem;
+	border-radius: 9999px;
+}
+
+.username__text {
+	color: black;
+	font-size: 1rem;
+	font-weight: 500;
+}
+.menu__div {
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 0;
+	gap: 2rem;
+}
+
+.menu__item {
+	height: 3rem;
+	border-radius: 20px;
+	background-color: #DEDCD8;
+}
+
+.menu__item:hover {
+	background-color: #595959;
+	cursor: pointer;
+}
+
+.logout__div {
+	align-self: center;
+}
+
+.logout__button {
+	background-color: transparent;
+	border: none;
+	color: black;
+	font-size: 1rem;
+	font-weight: 450;
+	cursor: pointer;
+}

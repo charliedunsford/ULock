@@ -1,4 +1,4 @@
-<form action="vault.html" id="signin__form" class="auth__form hidden">
+<form [formGroup]="signinForm" (submit)="onSubmit()">
 	<div>
 		<h1 class="auth__text--large">Sign in</h1>
 		<p class="auth__text">Sign in or <a [routerLink]="['/auth']" [queryParams]="{ form: 'signup' }">create an account</a></p>

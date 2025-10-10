@@ -18,4 +18,8 @@ export class AuthPage {
       this.formType = params['form'] === 'signup' ? 'signup' : 'signin';
     });
   }
+
+  submitSignup(name: string, username: string, password: string) {
+    console.log('Form submitted:', { name, username, password });
+  }
 }
