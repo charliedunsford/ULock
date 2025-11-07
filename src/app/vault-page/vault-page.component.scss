@@ -13,7 +13,7 @@ body {
 }
 
 app-navigation {
-    background-color: var(--primary-color);
+    border-right: 1px solid var(--accent-color);
     flex: 1 1 auto;
     padding: 3rem;
 	display: flex;
@@ -23,13 +23,12 @@ app-navigation {
 }
 
 app-vault {
-    background-color: var(--primary-color);
     flex: 18 1 auto;
     margin: 3rem;
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 2rem 3rem;
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 ::-webkit-scrollbar {
@@ -37,14 +36,14 @@ app-vault {
 }
 
 ::-webkit-scrollbar-track {
-	background: transparent;
+	background: transparent
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #555;
+	background: var(--accent-color);
 	border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #666;
+	background: var(--accent-color);
 }

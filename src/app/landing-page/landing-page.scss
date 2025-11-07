@@ -21,7 +21,7 @@ main {
 		font-weight: 450;
 		font-size: 1.2rem;
 		margin: 1rem 1rem;
-		color: #251752;
+		color: var(--text-color);
 	}
 
 	.display__container {
@@ -39,26 +39,14 @@ main {
 		margin-bottom: 1rem;
 		max-width: 35rem;
 		max-height: 25rem;
-		transition: background-color 0.3s ease-out, transform 0.3s ease;
+		transition: all 0.3s ease;
 		flex-direction: column;
 		overflow: hidden;
 		gap: 2rem;
 	}
 
-	.display__item:hover {
-		background-color: var(--secondary-color);
-		transform: scale(1.05);
-	}
-
 	.display__item:last-child {
 		display: none;
-	}
-
-	.display__text {
-		font-size: 1.3rem;
-		font-weight: 450;
-		text-align: center;
-		color: #251752;
 	}
 }
 
@@ -67,10 +55,49 @@ main {
 		@include flex-center();
 		flex: 1;
 		text-align: center;
+		text-wrap: nowrap;
 		font-weight: 450;
-		font-size: 1.8rem;
-		margin: 1rem 15rem;
-		color: #251752;
+		font-size: 2rem;
+		margin: 1rem 20%;
+		color: var(--primary-color);
+		cursor: default;
+	}
+
+	.flip {
+		display: inline-block;
+		perspective: 800px;
+		color: var(--primary-color);
+	}
+
+	.flip::before {
+		content: attr(data-front);
+		display: inline-block;
+		transition: all 0.5s ease;
+		transform-origin: top;
+		transform: rotateX(0);
+		opacity: 1;
+	}
+
+	.flip::after {
+  		content: attr(data-back);
+  		position: absolute;
+  		left: 0;
+  		top: 0;
+  		transition: all 0.5s ease;
+  		transform-origin: bottom;
+ 		transform: rotateX(-90deg);
+		margin-left: 0.5rem;
+  		opacity: 0;
+	}
+
+	.hero__text:hover .flip::before {
+  		transform: rotateX(90deg);
+  		opacity: 0;
+	}
+
+	.hero__text:hover .flip::after {
+  		transform: rotateX(0);
+  		opacity: 1;
 	}
 
 	.display__container {
@@ -83,29 +110,28 @@ main {
 	.display__item {
 		@include flex-center();
 		flex: 0 1 50%;
-		background-color: var(--primary-color);
 		border-radius: 30px;
+		border: 1px lightgrey solid;
 		padding: 3rem;
 		margin-bottom: 1rem;
 		max-width: 32rem;
-		height: 36rem;
-		transition: background-color 0.3s ease-out, transform 0.3s ease;
+		height: 34rem;
+		transition: transform 0.3s ease-out, border 0.3s ease;
 		flex-direction: column;
 		overflow: hidden;
 		display: flex;
 		justify-content: space-between;
-	}
-
-	.display__item:hover {
-		background-color: var(--secondary-color);
-		transform: scale(1.05);
-	}
-
-	.display__text {
-		font-size: 1.4rem;
-		font-weight: 450;
-		text-align: center;
-		color: #251752;
 	}	
+}
 
+.display__item:hover {
+	transform: scale(1.05);
+	border: 1px var(--secondary-color) solid;
+}
+
+.display__text {
+	font-size: 1.3rem;
+	font-weight: 450;
+	text-align: center;
+	color: var(--primary-color);
 }

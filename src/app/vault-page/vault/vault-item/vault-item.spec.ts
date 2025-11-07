@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VaultPage } from './vault-page';
+import { VaultItem } from './vault-item';
 
-describe('VaultPage', () => {
-  let component: VaultPage;
-  let fixture: ComponentFixture<VaultPage>;
+describe('VaultItem', () => {
+  let component: VaultItem;
+  let fixture: ComponentFixture<VaultItem>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VaultPage]
+      imports: [VaultItem]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VaultPage);
+    fixture = TestBed.createComponent(VaultItem);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

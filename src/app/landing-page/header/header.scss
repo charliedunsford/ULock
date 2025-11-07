@@ -5,7 +5,7 @@
 }
 
 svg {
-	fill: #251752;
+	fill: var(--primary-color);
 }
 
 a {
@@ -14,7 +14,7 @@ a {
 
 @media (max-width: 899px) {
 	header {
-		background-color: var(--primary-color);
+		border: 1px var(--primary-color) solid;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -34,13 +34,12 @@ a {
 
 @media (min-width: 900px) {
 	header {
-		background-color: var(--primary-color);
+		border-bottom: 1px lightgrey solid;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		border-radius: 9999px;
-		margin: 1% 4rem;
-		padding: 0 1.5rem;
+		margin: 1% 8rem;
+		padding: 0 2rem;
 		height: 3.8rem;
 	}
 
@@ -48,7 +47,7 @@ a {
 		font-weight: 600;
 		text-decoration: none;
 		font-size: 1rem;
-		//color: #240046;
+		color: var(--primary-color);
 	}
 
 	.header__link--animated {
@@ -57,20 +56,18 @@ a {
 	}
 
 	.header__link--animated:hover {
-		color: #623CEA;
+		color: var(--accent-color);
 	}
 
 	.header__link--fancy {
 		border-radius: 9999px;
-		color: var(--primary-color);
+		color: var(--secondary-color);
 		padding: 0.6rem 1.2rem;
-		background: linear-gradient(120deg, #623CEA, purple);
-		background-size: 200% 200%;
-		background-position: left center;
-		transition: background-position 0.5s ease;
+		background-color: var(--primary-color);
+		transition: background-color 0.3s ease-out;
 	}
 
 	.header__link--fancy:hover {
-		background-position: right center;
+		background-color: var(--accent-color);
 	}
 }

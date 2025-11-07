@@ -6,8 +6,8 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-vault-page',
   imports: [Navigation, Vault],
-  templateUrl: './vault-page.html',
-  styleUrls: ['./vault-page.scss']
+  templateUrl: './vault-page.component.html',
+  styleUrls: ['./vault-page.component.scss']
 })
 export class VaultPage {
   constructor(private titleService: Title) {

@@ -33,8 +33,9 @@
 
 @media (min-width: 900px) {
 	footer {
-		background-color: var(--primary-color);
-		padding: 0.2rem 4rem;
+		border-top: 1px lightgrey solid;
+		padding: 0rem 4rem;
+		margin: 0 8rem;
 	}
 
 	.footer__link {
