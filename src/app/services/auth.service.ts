@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environment';
-import { BehaviorSubject, Observable, tap, catchError, of } from 'rxjs';
+import { BehaviorSubject, Observable, tap, catchError, of, switchMap, from } from 'rxjs';
 import { EncryptService } from './encrypt.service';
 
 @Injectable({
@@ -45,22 +45,32 @@ export class AuthService {
 
   signup(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/signup`, { username, password })
-      .pipe(tap(async (res: any) => {
-        localStorage.setItem('token', res.token);
-        const uname = res.user?.username ?? username;
-        this.currentUserSubject.next(uname);
-        await this.encryptService.deriveKey(password);
-      }));
+      .pipe(
+        tap((res: any) => {
+          localStorage.setItem('token', res.token);
+          const uname = res.user?.username ?? username;
+          this.currentUserSubject.next(uname);
+        }),
+        switchMap(async (res: any) => {
+          await this.encryptService.deriveKey(password);
+          return res;
+        })
+      );
   }
 
   signin(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/signin`, { username, password })
-      .pipe(tap(async (res: any) => {
-        localStorage.setItem('token', res.token);
-        const uname = res.user?.username ?? this.decodeUsername(res.token) ?? username;
-        this.currentUserSubject.next(uname);
-        await this.encryptService.deriveKey(password);
-      }));
+      .pipe(
+        tap((res: any) => {
+          localStorage.setItem('token', res.token);
+          const uname = res.user?.username ?? this.decodeUsername(res.token) ?? username;
+          this.currentUserSubject.next(uname);
+        }),
+        switchMap(async (res: any) => {
+          await this.encryptService.deriveKey(password);
+          return res;
+        })
+      );
   }
 
   verifyToken(): Observable<any> {

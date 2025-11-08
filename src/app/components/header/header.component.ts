@@ -12,11 +12,11 @@ export class HeaderComponent {
   constructor(private router: Router) { }
 
   goToSignIn() {
-    this.router.navigate(['/auth'], { queryParams: { mode: 'signin' } });
+    this.router.navigate(['/auth'], { queryParams: { form: 'signin' } });
   }
 
   goToSignUp() {
-    this.router.navigate(['/auth'], { queryParams: { mode: 'signup' } });
+    this.router.navigate(['/auth'], { queryParams: { form: 'signup' } });
   }
 
 }

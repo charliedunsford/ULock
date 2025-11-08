@@ -5,8 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class EncryptService {
   private encryptKey: CryptoKey | null = null;
-
-  constructor() { }
+  private readonly STORAGE_KEY = 'ulock_key_material';
+  private readonly EXPIRY_KEY = 'ulock_key_expiry';
+  private readonly SESSION_HOURS = 4;
+  constructor() {
+    this.loadKeyFromStorage();
+  }
 
   async deriveKey(masterPassword: string, salt: string = 'ulock-salt-v1'): Promise<void> {
     const encoder = new TextEncoder();
@@ -27,9 +31,51 @@ export class EncryptService {
       },
       keyMaterial,
       { name: 'AES-GCM', length: 256 },
-      false,
+      true,
       ['encrypt', 'decrypt']
     );
+    await this.saveKeyToStorage();
+  }
+
+  private async saveKeyToStorage(): Promise<void> {
+    if (!this.encryptKey) return;
+
+    try {
+      const exportedKey = await crypto.subtle.exportKey('jwk', this.encryptKey);
+      
+      sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(exportedKey));
+      
+      const expiryTime = Date.now() + (this.SESSION_HOURS * 60 * 60 * 1000);
+      sessionStorage.setItem(this.EXPIRY_KEY, expiryTime.toString());
+    } catch (error) {
+      console.error('Failed to save key to storage:', error);
+    }
+  }
+
+  private async loadKeyFromStorage(): Promise<void> {
+    try {
+      const keyData = sessionStorage.getItem(this.STORAGE_KEY);
+      const expiryTime = sessionStorage.getItem(this.EXPIRY_KEY);
+
+      if (!keyData || !expiryTime) return;
+
+      if (Date.now() > parseInt(expiryTime)) {
+        this.clearKey();
+        return;
+      }
+
+      const jwk = JSON.parse(keyData);
+      this.encryptKey = await crypto.subtle.importKey(
+        'jwk',
+        jwk,
+        { name: 'AES-GCM' },
+        true,
+        ['encrypt', 'decrypt']
+      );
+    } catch (error) {
+      console.error('Failed to load key from storage:', error);
+      this.clearKey();
+    }
   }
 
   async encrypt(plaintext: string): Promise<string> {
@@ -83,6 +129,8 @@ export class EncryptService {
 
   clearKey(): void {
     this.encryptKey = null;
+    sessionStorage.removeItem(this.STORAGE_KEY);
+    sessionStorage.removeItem(this.EXPIRY_KEY);
   }
 
   hasKey(): boolean {
