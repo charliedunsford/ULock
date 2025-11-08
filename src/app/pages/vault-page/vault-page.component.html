@@ -1,0 +1,12 @@
+<main>
+    <app-vault-nav />
+
+    <div class="vault-content">
+        @if (settings) {
+            <app-vault-settings />
+        } @else {
+            <app-vault-list />
+            <app-vault-details />
+        }
+    </div>
+</main>

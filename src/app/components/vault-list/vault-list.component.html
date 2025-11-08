@@ -1,0 +1,15 @@
+@for (vaultItem of vaultItems | sort; track vaultItem.title) {
+    <div class="vault__item">
+        <div class="vault__item-avatar"></div>
+        <div class="vault__item-text">
+            <p class="vault__item-title">{{ vaultItem.title }}</p>
+            <p class="vault__item-username">{{ vaultItem.username }}</p>
+        </div>
+    </div>
+}
+
+<div class="vault__item vault__item--new">
+    <div class="vault__item-text">
+        <p class="vault__item-title">add new</p>
+    </div>
+</div>

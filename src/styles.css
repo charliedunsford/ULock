@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@100..900&display=swap');
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #32302f;
+        --secondary-color: #fcfcfc;
+        --accent-color: #dddddd;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "noto serif georgian", serif;
+    scrollbar-color: var(--secondary-color) transparent;
+	scrollbar-width: thin;
+}
