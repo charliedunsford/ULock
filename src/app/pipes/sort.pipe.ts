@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { VaultItem } from '../interfaces/vault-item';
+import { VaultItem } from '../models/vault-item.model';
 
 type SortKey = 'title';
 

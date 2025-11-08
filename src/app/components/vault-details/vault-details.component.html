@@ -1,32 +1,34 @@
+@if (item) {
   <div class="item-display__info">
-    <div class="item-display__avatar">TI</div>
+    <div class="item-display__avatar"></div>
     <div>
-      <p class="item-display__title">Title</p>
-      <p class="item-display__username">Username</p>
+      <p class="item-display__title">{{ item.title }}</p>
+      <p class="item-display__username">{{ item.username }}</p>
     </div>
   </div>
 
-  <form class="item-display__form">
+  <form class="item-display__form" (ngSubmit)="update()">
     <div class="item-display__field">
       <label>Title</label>
-      <input class="item-display__input" type="text" id="title" name="title" value="Title" required>
+      <input class="item-display__input" type="text" id="title" name="title" [value]="item.title" required>
     </div>
     <div class="item-display__field">
       <label>Username</label>
-      <input class="item-display__input" type="text" id="username" name="username" value="Username" required>
+      <input class="item-display__input" type="text" id="username" name="username" [value]="item.username" required>
     </div>
     <div class="item-display__field">
       <label>Password</label>
-      <input class="item-display__input" type="text" id="password" name="password" value="Password" required>
+      <input class="item-display__input" type="text" id="password" name="password" [value]="item.password_encrypted" required>
     </div>
     <div class="item-display__field">
       <label>URL</label>
-      <input class="item-display__input" type="text" id="url" name="url" value="URL">
+      <input class="item-display__input" type="text" id="url" name="url" [value]="item.url" required>
     </div>
 
     <div class="item-display__buttons">
       <button type="submit" class="item-display__button">Save</button>
-      <button type="button" class="item-display__button">Delete</button>
+      <button type="button" class="item-display__button" (click)="delete()">Delete</button>
     </div>
-  </form>
 
+  </form>
+}
