@@ -56,7 +56,7 @@ a {
 	}
 
 	.header__link--animated:hover {
-		color: var(--accent-color);
+		color: grey;
 	}
 
 	.header__link--fancy {
@@ -68,6 +68,6 @@ a {
 	}
 
 	.header__link--fancy:hover {
-		background-color: var(--accent-color);
+		background-color: grey;
 	}
 }
