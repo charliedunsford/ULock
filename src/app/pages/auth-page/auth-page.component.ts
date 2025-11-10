@@ -14,9 +14,9 @@ import { CommonModule } from '@angular/common';
 })
 export class AuthPage implements OnInit {
   username = '';
-  password = ''
+  password = '';
   isSignup = false;
-  errorMessage = ''
+  errorMessage = '';
   validationErrors: string[] = [];
 
   constructor(private titleService: Title, private router: Router, private authService: AuthService, private route: ActivatedRoute) {
@@ -27,25 +27,6 @@ export class AuthPage implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.isSignup = params['form'] === 'signup';
     });
-  }
-
-  validatePassword(password: string): string[] {
-    const errors: string[] = [];
-    
-    if (password.length < 8) {
-      errors.push('Password must be at least 8 characters long');
-    }
-    if (!/[A-Z]/.test(password)) {
-      errors.push('Password must contain at least one uppercase letter');
-    }
-    if (!/[0-9]/.test(password)) {
-      errors.push('Password must contain at least one number');
-    }
-    if (!/[!@#$%^&*()_+\-\=\[\]{};':"\\|,.<>\/?]/.test(password)) {
-      errors.push('Password must contain at least one special character');
-    }
-    
-    return errors;
   }
 
   validateForm(): boolean {
@@ -62,30 +43,36 @@ export class AuthPage implements OnInit {
     }
 
     if (this.isSignup) {
-      const passwordErrors = this.validatePassword(this.password);
-      this.validationErrors.push(...passwordErrors);
+      if (this.password.length < 8) {
+        this.validationErrors.push('Password must be at least 8 characters');
+      }
+      if (!/[A-Z]/.test(this.password)) {
+        this.validationErrors.push('Password must contain at least one uppercase letter');
+      }
+      if (!/[0-9]/.test(this.password)) {
+        this.validationErrors.push('Password must contain at least one number');
+      }
+      if (!/[!@#$%^&*()_+\-\=\[\]{};':"\\|,.<>\/?]/.test(this.password)) {
+        this.validationErrors.push('Password must contain at least one special character');
+      }
     }
 
     return this.validationErrors.length === 0;
   }
 
-
   submit() {
     if (!this.validateForm()) return;
 
-    const auth = this.isSignup
-      ? this.authService.signup(this.username, this.password)
-      : this.authService.signin(this.username, this.password);
-
-    auth.subscribe({
-      next: () => {
-        this.router.navigate(['/vault']);
-      },
-      error: () => {
-        this.errorMessage = this.isSignup
-          ? 'Sign up failed. Username may already be taken.' 
-          : 'Sign in failed. Please check your credentials.';
-      }
-    });
+    if (this.isSignup) {
+      this.authService.signup(this.username, this.password).subscribe({
+        next: () => this.router.navigate(['/vault']),
+        error: () => this.errorMessage = 'Sign up failed. Username may already be taken.'
+      });
+    } else {
+      this.authService.signin(this.username, this.password).subscribe({
+        next: () => this.router.navigate(['/vault']),
+        error: () => this.errorMessage = 'Sign in failed. Please check your credentials.'
+      });
+    }
   }
 }

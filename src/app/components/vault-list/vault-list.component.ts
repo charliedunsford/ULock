@@ -22,8 +22,13 @@ export class VaultListComponent implements OnInit {
   }
 
   private loadItems(): void {
-    this.vaultService.getVaultItems().subscribe(items => {
-      this.vaultItems = items;
+    this.vaultService.readVaultItems().subscribe({
+      next: (items) => {
+        this.vaultItems = items;
+      },
+      error: () => {
+        this.vaultItems = [];
+      }
     });
   }
 
@@ -33,31 +38,39 @@ export class VaultListComponent implements OnInit {
   }
 
   add(): void {
-    this.vaultService.addVaultItem({
-      title: 'New Item',
+    this.vaultService.createVaultItem({
+      title: '',
       username: '',
       password_encrypted: '',
-      url: '',
-      notes: '', // not yet implemented in form
-      vault_name: '' // not yet implemented in form
-    }).subscribe({
-      next: (newItem) => {
-        this.vaultItems.push(newItem);
-        this.selectItem(newItem);
-      },
-      error: (err) => {
-        console.error('Failed to add vault item:', err);
-      }
+      url: ''
+    }).subscribe((newItem) => {
+      this.vaultItems.push(newItem);
+      this.selectItem(newItem);
     });
+  }
+
+  updateItem(updatedItem: VaultItem): void {
+    const index = this.vaultItems.findIndex(item => item.id === updatedItem.id);
+    if (index !== -1) {
+      this.vaultItems[index] = updatedItem;
+      this.vaultItems = [...this.vaultItems];
+      this.selectedItem = updatedItem;
+    }
+  }
+
+  deleteItem(id: number): void {
+    this.vaultItems = this.vaultItems.filter(item => item.id !== id);
+    this.selectedItem = undefined;
   }
 
   getInitials(title?: string): string {
     if (!title) return '?';
-    const words = title.trim().split(/\s+/).filter(w => w.length > 0);
+    
+    const words = title.trim().split(/\s+/);
     if (words.length >= 2) {
       return (words[0][0] + words[1][0]).toUpperCase();
     }
-    const w = words[0] || '';
-    return (w.substring(0, 2)).toUpperCase() || '?';
+    
+    return title.substring(0, 2).toUpperCase() || '?';
   }
 }

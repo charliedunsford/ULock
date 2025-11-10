@@ -1,15 +1,13 @@
-@for (vaultItem of vaultItems | sort; track vaultItem.title) {
-    <div (click)="selectItem(vaultItem)" [class.selected]="vaultItem === selectedItem" class="vault__item">
-        <div class="vault__item-avatar">{{ getInitials(vaultItem.title) }}</div>
-        <div class="vault__item-text">
-            <p class="vault__item-title">{{ vaultItem.title }}</p>
-            <p class="vault__item-username">{{ vaultItem.username }}</p>
+<div class="vault-list__scroll">
+    @for (vaultItem of vaultItems | sort; track vaultItem.title) {
+        <div (click)="selectItem(vaultItem)" [class.selected]="vaultItem === selectedItem" class="vault__item">
+            <div class="vault__item-avatar">{{ getInitials(vaultItem.title) }}</div>
+            <div class="vault__item-text">
+                <p class="vault__item-title">{{ vaultItem.title }}</p>
+                <p class="vault__item-username">{{ vaultItem.username }}</p>
+            </div>
         </div>
-    </div>
-}
-
-<div (click)="add()" class="vault__item vault__item--new">
-    <div class="vault__item-text">
-        <p class="vault__item-title">add new</p>
-    </div>
+    }
 </div>
+
+<button (click)="add()" class="vault-list__add-button">Add new item</button>

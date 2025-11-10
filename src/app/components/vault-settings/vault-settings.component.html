@@ -1,1 +1,9 @@
-<p>vault-settings works!</p>
+<h1>Settings</h1>
+
+<div class="option__item">
+    <p class="option__text">Enable Dark Mode</p>
+    <label class="checkbox__switch">
+        <input type="checkbox" (change)="toggleDarkMode($event)" [checked]="isDarkMode" />
+        <span class="checkbox__slider"></span>
+    </label>
+</div>

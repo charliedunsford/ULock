@@ -4,6 +4,4 @@ export interface VaultItem {
     username: string;
     password_encrypted: string;
     url?: string;
-    notes?: string;
-    vault_name?: string;
 }

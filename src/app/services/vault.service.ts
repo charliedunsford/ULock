@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, from, switchMap, map } from 'rxjs';
+import { Observable, from, switchMap } from 'rxjs';
 import { VaultItem } from '../models/vault-item.model';
 import { environment } from '../environment';
 import { EncryptService } from './encrypt.service';
@@ -11,10 +11,7 @@ import { EncryptService } from './encrypt.service';
 export class VaultService {
   private apiUrl = `${environment.apiUrl}/vault`;
   
-  constructor(
-    private http: HttpClient,
-    private encryptService: EncryptService
-  ) { }
+  constructor(private http: HttpClient, private encryptService: EncryptService) {}
 
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
@@ -23,24 +20,18 @@ export class VaultService {
     });
   }
 
-  getVaultItems(): Observable<VaultItem[]> {
-    return this.http.get<VaultItem[]>(this.apiUrl, { headers: this.getAuthHeaders() }).pipe(
-      switchMap(items => from(this.decryptItems(items)))
-    );
-  }
-
-  getVaultItem(id: number): Observable<VaultItem> {
-    return this.http.get<VaultItem>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() }).pipe(
-      switchMap(item => from(this.decryptItem(item)))
-    );
-  }
-
-  addVaultItem(item: VaultItem): Observable<VaultItem> {
+  createVaultItem(item: VaultItem): Observable<VaultItem> {
     return from(this.encryptItem(item)).pipe(
       switchMap(encryptedItem => 
         this.http.post<VaultItem>(this.apiUrl, encryptedItem, { headers: this.getAuthHeaders() })
       ),
       switchMap(savedItem => from(this.decryptItem(savedItem)))
+    );
+  }
+
+  readVaultItems(): Observable<VaultItem[]> {
+    return this.http.get<VaultItem[]>(this.apiUrl, { headers: this.getAuthHeaders() }).pipe(
+      switchMap(items => from(this.decryptItems(items)))
     );
   }
 
@@ -58,11 +49,9 @@ export class VaultService {
   }
 
   private async encryptItem(item: VaultItem): Promise<VaultItem> {
-    if (!this.encryptService.hasKey()) {
-      throw new Error('Encryption key not available. Please sign in again.');
-    }
-
-    const encryptedPassword = await this.encryptService.encrypt(item.password_encrypted);
+    const encryptedPassword = item.password_encrypted
+      ? await this.encryptService.encrypt(item.password_encrypted)
+      : '';
 
     return {
       ...item,
@@ -71,24 +60,14 @@ export class VaultService {
   }
 
   private async decryptItem(item: VaultItem): Promise<VaultItem> {
-    if (!this.encryptService.hasKey()) {
-      throw new Error('Encryption key not available. Please sign in again.');
-    }
+    const decryptedPassword = item.password_encrypted
+      ? await this.encryptService.decrypt(item.password_encrypted)
+      : '';
 
-    try {
-      const decryptedPassword = await this.encryptService.decrypt(item.password_encrypted);
-
-      return {
-        ...item,
-        password_encrypted: decryptedPassword
-      };
-    } catch (error) {
-      console.error('Failed to decrypt vault item:', error);
-      return {
-        ...item,
-        password_encrypted: '[Decryption Failed]'
-      };
-    }
+    return {
+      ...item,
+      password_encrypted: decryptedPassword
+    };
   }
 
   private async decryptItems(items: VaultItem[]): Promise<VaultItem[]> {

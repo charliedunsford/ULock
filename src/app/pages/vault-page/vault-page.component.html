@@ -1,12 +1,12 @@
 <main>
-    <app-vault-nav />
+    <app-vault-nav [username]="username" (settingsClicked)="toggleSettings()" />
 
     <div class="vault-content">
         @if (settings) {
             <app-vault-settings />
         } @else {
-            <app-vault-list />
-            <app-vault-details />
+            <app-vault-list (itemSelected)="itemSelected($event)" />
+            <app-vault-details [item]="selectedItem" (itemUpdated)="itemUpdated($event)" (itemDeleted)="itemDeleted($event)" />
         }
     </div>
 </main>

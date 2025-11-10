@@ -29,6 +29,7 @@
     gap: 2rem;
     line-height: 2rem;
     margin-left: 8%;
+    color: var(--primary-color);
 }
 
 .item-display__title {
@@ -42,7 +43,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 3rem;
+    margin: 3rem 3rem 0 3rem;
 }
 
 .item-display__field {
@@ -50,6 +51,7 @@
     flex-direction: column;
     margin: 1.5rem 0;
     gap: 0.5rem;
+    color: var(--primary-color);
 }
 
 .item-display__input {
@@ -60,7 +62,14 @@
     font-size: 1rem;
 }
 
-.item-display__buttons {
+.item-display__edit {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: space-between;
+}
+
+.buttons {
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -69,9 +78,9 @@
 .item-display__button {
     padding: 0.4rem 1.5rem;
     border: 1px solid var(--primary-color);
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: var(--secondary-color);
-    color: var(--vault-text-color);
+    color: var(--primary-color);
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
@@ -80,4 +89,37 @@
 
 .item-display__button:hover {
     box-shadow: inset 0 0 20px var(--accent-color);
+}
+
+.item-display__button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.message {
+    padding: 0.4rem 1em;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+    border: 1px solid var(--accent-color);
+    color: var(--primary-color);
+    opacity: 1;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.message.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

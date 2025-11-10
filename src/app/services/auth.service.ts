@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environment';
-import { BehaviorSubject, Observable, tap, catchError, of, switchMap, from } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { EncryptService } from './encrypt.service';
 
 @Injectable({
@@ -12,10 +12,7 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<string | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(
-    private http: HttpClient,
-    private encryptService: EncryptService
-  ) { }
+  constructor(private http: HttpClient, private encryptService: EncryptService) { }
 
   initFromStorage() {
     const token = localStorage.getItem('token');
@@ -36,24 +33,13 @@ export class AuthService {
     }
   }
 
-  private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token');
-    return new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-  }
-
   signup(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/signup`, { username, password })
       .pipe(
         tap((res: any) => {
           localStorage.setItem('token', res.token);
-          const uname = res.user?.username ?? username;
-          this.currentUserSubject.next(uname);
-        }),
-        switchMap(async (res: any) => {
-          await this.encryptService.deriveKey(password);
-          return res;
+          this.currentUserSubject.next(username);
+          this.encryptService.deriveKey(password);
         })
       );
   }
@@ -63,27 +49,8 @@ export class AuthService {
       .pipe(
         tap((res: any) => {
           localStorage.setItem('token', res.token);
-          const uname = res.user?.username ?? this.decodeUsername(res.token) ?? username;
-          this.currentUserSubject.next(uname);
-        }),
-        switchMap(async (res: any) => {
-          await this.encryptService.deriveKey(password);
-          return res;
-        })
-      );
-  }
-
-  verifyToken(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/verify`, { headers: this.getAuthHeaders() })
-      .pipe(
-        tap((res: any) => {
-          if (res.user?.username) {
-            this.currentUserSubject.next(res.user.username);
-          }
-        }),
-        catchError((error) => {
-          this.logout();
-          return of({ valid: false, error: 'Token expired or invalid' });
+          this.currentUserSubject.next(username);
+          this.encryptService.deriveKey(password);
         })
       );
   }
@@ -96,9 +63,5 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem('token');
   }
 }

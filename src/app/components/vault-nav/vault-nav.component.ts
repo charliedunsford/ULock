@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-vault-nav',
@@ -9,6 +11,16 @@ import { Component, Input } from '@angular/core';
 })
 export class VaultNavComponent {
   @Input() username?: string;
+  @Output() settingsClicked = new EventEmitter<void>();
 
-  logout() {}
+  constructor(private authService: AuthService, private router: Router) { }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
+
+  settings(): void {
+    this.settingsClicked.emit();
+  }
 }

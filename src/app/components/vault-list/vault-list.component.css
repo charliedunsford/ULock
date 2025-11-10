@@ -53,12 +53,31 @@
     box-shadow: inset 0 0 20px var(--accent-color);
 }
 
-.vault__item--new {
-    border: 1px dashed var(--primary-color);
-    justify-content: center;
-    align-items: center;
+.vault-list__scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
-    width: 30%;
-    height: 5%;
-    align-self: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding-right: 0.5rem;
+}
+
+.vault-list__add-button {
+    flex-shrink: 0;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+.vault-list__add-button:hover {
+    box-shadow: inset 0 0 20px var(--accent-color);
 }
