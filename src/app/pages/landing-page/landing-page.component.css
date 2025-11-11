@@ -54,6 +54,10 @@ main {
 }
 
 @media (max-width: 899px) {
+	:host {
+		padding-bottom: calc(env(safe-area-inset-bottom, 20px));
+	}
+
 	.hero__text {
 		display: none;
 	}
@@ -75,6 +79,10 @@ main {
 
 	.display__item:last-child {
 		display: none;
+	}
+
+	app-footer {
+		margin-bottom: 1rem;
 	}
 }
 

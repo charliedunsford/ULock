@@ -152,11 +152,17 @@
 
     .item-display__form {
         margin: 1rem 0 0 0;
+        padding-bottom: calc(2rem + env(safe-area-inset-bottom, 20px));
     }
 
     .item-display__edit {
         flex-direction: column-reverse;
         gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .item-display__field {
+        margin: 1rem 0;
     }
 
     .message {

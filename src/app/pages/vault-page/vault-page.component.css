@@ -32,6 +32,7 @@ app-vault-details {
     display: flex;
     flex-direction: column;
     padding: 3rem 2rem;
+    padding-bottom: calc(3rem + env(safe-area-inset-bottom));
     overflow: scroll;
 }
 
@@ -94,6 +95,7 @@ app-vault-settings {
 		border: none;
 		padding: 0;
 		padding-top: 2rem;
+		padding-bottom: calc(2rem + env(safe-area-inset-bottom, 20px));
 	}
 
 	app-vault-settings {
@@ -102,5 +104,6 @@ app-vault-settings {
 		border: none;
 		padding: 1rem;
 		padding-top: 4rem;
+		padding-bottom: calc(1rem + env(safe-area-inset-bottom, 20px));
 	}
 }
