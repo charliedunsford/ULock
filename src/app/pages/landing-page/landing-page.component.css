@@ -11,6 +11,12 @@
 	align-items: center;
 }
 
+img {
+	width: 350px;
+	height: 350px;
+	border-radius: 12px;
+}
+
 app-header,
 app-footer {
 	align-self: center;
@@ -60,6 +66,11 @@ main {
 	.display__item {
 		max-width: 35rem;
 		gap: 4rem;
+		border: none;
+	}
+
+	img {
+		border: 1px solid var(--accent-color)
 	}
 
 	.display__item:last-child {
@@ -72,8 +83,8 @@ main {
 		text-align: center;
 		text-wrap: nowrap;
 		font-weight: 450;
-		font-size: 2rem;
-		margin: 1rem 20%;
+		font-size: 1.6rem;
+		margin: 5rem 20%;
 		color: var(--primary-color);
 		cursor: default;
 	}

@@ -45,9 +45,7 @@ svg {
 	}
 
 	.footer__link {
-		padding-right: 1rem;
-		font-size: 0.6rem;
-		white-space: nowrap;
+		display: none;
 	}
 
 	.footer__text--center {
