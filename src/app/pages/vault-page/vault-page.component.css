@@ -72,3 +72,35 @@ app-vault-settings {
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--accent-color);
 }
+
+@media (max-width: 899px) {
+	app-vault-nav {
+		border-right: none;
+		padding: 0;
+		flex: 0;
+		position: relative;
+	}
+
+	.vault-content {
+		flex: 1;
+		margin: 1rem;
+		padding: 1rem;
+		flex-direction: column;
+	}
+
+	app-vault-list,
+	app-vault-details {
+		flex: 1;
+		border: none;
+		padding: 0;
+		padding-top: 2rem;
+	}
+
+	app-vault-settings {
+		flex: 1;
+		max-width: 100%;
+		border: none;
+		padding: 1rem;
+		padding-top: 4rem;
+	}
+}

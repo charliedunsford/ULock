@@ -1,14 +1,21 @@
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 :host {    
 	background-color: var(--secondary-color);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+.center {
+	display: flex;
+	justify-self: center;
+	align-items: center;
+}
+
+app-header,
+app-footer {
+	align-self: center;
+	width: 100%;
+	max-width: 150rem;
 }
 
 main {
@@ -17,33 +24,42 @@ main {
 	flex: 1;
 }
 
+.display__item {
+	border: 1px solid var(--accent-color);
+	border-radius: 30px;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	transition: transform 0.3s ease, border 0.3s ease;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.display__item:hover {
+	transform: scale(1.05);
+	border-color: var(--secondary-color);
+}
+
+.display__text {
+	font-size: 1.3rem;
+	font-weight: 450;
+	text-align: center;
+	color: var(--primary-color);
+}
+
 @media (max-width: 899px) {
 	.hero__text {
-		flex: 1;
-		text-align: center;
-		font-weight: 450;
-		font-size: 1.2rem;
-		margin: 1rem 1rem;
-		color: var(--text-color);
+		display: none;
 	}
 
 	.display__container {
 		flex: 1;
-		margin: 0rem 1rem;
+		margin: 0 1rem;
 	}
 
 	.display__item {
-		flex: 0 1 100%;
-		background-color: var(--primary-color);
-		border-radius: 30px;
-		padding: 1rem;
-		margin-bottom: 1rem;
 		max-width: 35rem;
-		max-height: 25rem;
-		transition: all 0.3s ease;
-		flex-direction: column;
-		overflow: hidden;
-		gap: 2rem;
+		gap: 4rem;
 	}
 
 	.display__item:last-child {
@@ -53,7 +69,6 @@ main {
 
 @media (min-width: 900px) {
 	.hero__text {
-		flex: 1;
 		text-align: center;
 		text-wrap: nowrap;
 		font-weight: 450;
@@ -66,7 +81,6 @@ main {
 	.flip {
 		display: inline-block;
 		perspective: 800px;
-		color: var(--primary-color);
 	}
 
 	.flip::before {
@@ -74,7 +88,6 @@ main {
 		display: inline-block;
 		transition: all 0.5s ease;
 		transform-origin: top;
-		transform: rotateX(0);
 		opacity: 1;
 	}
 
@@ -101,35 +114,19 @@ main {
 	}
 
 	.display__container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		flex: 1;
 		gap: 8rem;
-		margin: 0rem 6rem;
+		margin: 0 6rem;
 	}
 
 	.display__item {
 		flex: 0 1 50%;
-		border-radius: 30px;
-		border: 1px solid var(--accent-color);
 		padding: 3rem;
-		margin-bottom: 1rem;
 		max-width: 32rem;
 		height: 34rem;
-		transition: transform 0.3s ease-out, border 0.3s ease;
-		flex-direction: column;
-		overflow: hidden;
-		display: flex;
 		justify-content: space-between;
 	}	
-}
-
-.display__item:hover {
-	transform: scale(1.05);
-	border: 1px var(--secondary-color) solid;
-}
-
-.display__text {
-	font-size: 1.3rem;
-	font-weight: 450;
-	text-align: center;
-	color: var(--primary-color);
 }

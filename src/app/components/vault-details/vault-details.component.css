@@ -1,3 +1,7 @@
+.item-display__button--back {
+    display: none;
+}
+
 .item-display__img {
     height: 128px;
     width: 128px;
@@ -56,10 +60,14 @@
 
 .item-display__input {
     border: 1px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     height: 3rem;
     border-radius: 10px;
     padding: 0 1rem;
     font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .item-display__edit {
@@ -106,6 +114,8 @@
     color: var(--primary-color);
     opacity: 1;
     transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    text-wrap: nowrap;
+    visibility: visible;
 }
 
 .message.fade-out {
@@ -121,5 +131,35 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 899px) {
+    .item-display__button--back {
+        display: block;
+    }
+
+    .item-display__avatar {
+        height: 80px;
+        width: 80px;
+        font-size: 32px;
+    }
+
+    .item-display__title {
+        font-size: 1.5rem;
+        overflow: hidden;
+    }
+
+    .item-display__form {
+        margin: 1rem 0 0 0;
+    }
+
+    .item-display__edit {
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+
+    .message {
+        display: block;
     }
 }

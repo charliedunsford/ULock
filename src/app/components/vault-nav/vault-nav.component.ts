@@ -12,6 +12,8 @@ import { AuthService } from '../../services/auth.service';
 export class VaultNavComponent {
   @Input() username?: string;
   @Output() settingsClicked = new EventEmitter<void>();
+  @Output() allItemsClicked = new EventEmitter<void>();
+  menuOpen: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -22,5 +24,15 @@ export class VaultNavComponent {
 
   settings(): void {
     this.settingsClicked.emit();
+    this.menuOpen = false;
+  }
+
+  allItems(): void {
+    this.allItemsClicked.emit();
+    this.menuOpen = false;
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
   }
 }

@@ -1,13 +1,21 @@
-<div class="profile__div">
-	<img class="profile__img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F2c%2F47%2Fd5%2F2c47d5dd5b532f83bb55c4cd6f5bd1ef.jpg&f=1&nofb=1&ipt=4ca1073973b23a681edcc0b780221059ea3d9e6a8d3b2af7ba98bc8cf7ed4739">
-	<p class="username__text">{{ username || 'User' }}</p>
-</div>
+<button class="vault-nav__menu" [class.active]="menuOpen" (click)="toggleMenu()">
+	<span></span>
+	<span></span>
+	<span></span>
+</button>
 
-<div class="menu__div">
-	<div class="menu__item"><p class="menu__item-text">All items</p></div>
-</div>
+<div class="vault-nav__content" [class.open]="menuOpen">
+	<div class="profile__div">
+		<img class="profile__img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F2c%2F47%2Fd5%2F2c47d5dd5b532f83bb55c4cd6f5bd1ef.jpg&f=1&nofb=1&ipt=4ca1073973b23a681edcc0b780221059ea3d9e6a8d3b2af7ba98bc8cf7ed4739">
+		<p class="username__text">{{ username || 'User' }}</p>
+	</div>
 
-<div class="action__div">
-	<button class="action__button menu__item-text" (click)="logout()">Log out</button>
-	<button class="action__button menu__item-text" (click)="settings()">Settings</button>
+	<div class="menu__div">
+		<button class="menu__item" (click)="allItems()"><p class="menu__item-text">All items</p></button>
+	</div>
+
+	<div class="action__div">
+		<button class="action__button menu__item-text" (click)="logout()">Log out</button>
+		<button class="action__button menu__item-text" (click)="settings()">Settings</button>
+	</div>
 </div>

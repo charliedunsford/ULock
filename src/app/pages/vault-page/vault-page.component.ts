@@ -21,9 +21,12 @@ export class VaultPage implements OnInit, OnDestroy {
   settings: boolean = false;
   selectedItem?: VaultItem;
   username: string = '';
+  showDetails: boolean = false;
+  isMobile: boolean = false;
 
   constructor(private titleService: Title, private authService: AuthService) {
     this.titleService.setTitle('Vault | ULock');
+    this.checkMobile();
   }
 
   ngOnInit(): void {
@@ -33,14 +36,28 @@ export class VaultPage implements OnInit, OnDestroy {
     if (savedTheme === 'true') {
       document.body.classList.add('dark-mode');
     }
+
+    window.addEventListener('resize', () => this.checkMobile());
   }
 
   ngOnDestroy(): void {
     document.body.classList.remove('dark-mode');
+    window.removeEventListener('resize', () => this.checkMobile());
+  }
+
+  checkMobile(): void {
+    this.isMobile = window.innerWidth <= 899;
   }
 
   itemSelected(item: VaultItem): void {
     this.selectedItem = item;
+    if (this.isMobile) {
+      this.showDetails = true;
+    }
+  }
+
+  backToList(): void {
+    this.showDetails = false;
   }
 
   itemUpdated(item: VaultItem): void {
@@ -53,7 +70,11 @@ export class VaultPage implements OnInit, OnDestroy {
     this.vaultList.deleteItem(id);
   }
 
-  toggleSettings(): void {
-    this.settings = !this.settings;
+  openSettings(): void {
+    this.settings = true;
+  }
+
+  closeSettings(): void {
+    this.settings = false;
   }
 }

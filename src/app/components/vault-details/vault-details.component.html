@@ -1,4 +1,5 @@
 @if (item) {
+  
   <div class="item-display__info">
     <div class="item-display__avatar">{{ getInitials(vaultDetailForm.title) }}</div>
     <div>
@@ -10,37 +11,31 @@
   <form class="item-display__form" (ngSubmit)="update()">
     <div class="item-display__field">
       <label>Title</label>
-      <input class="item-display__input" type="text" id="title" name="title" [(ngModel)]="vaultDetailForm.title" required>
+      <input class="item-display__input" type="text" id="title" name="title" [(ngModel)]="vaultDetailForm.title" maxlength="15" required>
     </div>
     <div class="item-display__field">
       <label>Username</label>
-      <input class="item-display__input" type="text" id="username" name="username" [(ngModel)]="vaultDetailForm.username" required>
+      <input class="item-display__input" type="text" id="username" name="username" [(ngModel)]="vaultDetailForm.username" maxlength="20" required>
     </div>
     <div class="item-display__field">
       <label>Password</label>
-      <input class="item-display__input" type="text" id="password" name="password" [(ngModel)]="vaultDetailForm.password_encrypted" required>
+      <input class="item-display__input" type="text" id="password" name="password" [(ngModel)]="vaultDetailForm.password_encrypted" maxlength="100" required>
     </div>
     <div class="item-display__field">
       <label>URL</label>
-      <input class="item-display__input" type="text" id="url" name="url" [(ngModel)]="vaultDetailForm.url">
+      <input class="item-display__input" type="text" id="url" name="url" [(ngModel)]="vaultDetailForm.url" maxlength="200">
     </div>
 
     <div class="item-display__edit">
     <div class="buttons">
         <button type="submit" class="item-display__button">Save</button>
         <button type="button" class="item-display__button" (click)="delete()">Delete</button>
+        <button class="item-display__button item-display__button--back" (click)="goBack()">Back</button>
     </div>
 
-      @if (error) {
-        <div class="message" [class.fade-out]="messageFading">
-          <p>{{ error }}</p>
-        </div>
-      }
-      @if (success) {
-        <div class="message" [class.fade-out]="messageFading">
-          <p>{{ success }}</p>
-        </div>
-      }
+      <div class="message" [class.fade-out]="messageFading" [style.visibility]="error || success ? 'visible' : 'hidden'">
+        <p>{{ error || success || '&nbsp;' }}</p>
+      </div>
     </div>
 
   </form>

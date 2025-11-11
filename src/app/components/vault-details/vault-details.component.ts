@@ -16,6 +16,7 @@ export class VaultDetailsComponent {
   @Input() item?: VaultItem;
   @Output() itemUpdated = new EventEmitter<VaultItem>();
   @Output() itemDeleted = new EventEmitter<number>();
+  @Output() backClicked = new EventEmitter<void>();
 
   vaultDetailForm: VaultItem = {
     title: '',
@@ -25,6 +26,10 @@ export class VaultDetailsComponent {
   };
 
   constructor(private vaultService: VaultService) {}
+
+  goBack(): void {
+    this.backClicked.emit();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
    if (changes['item'] && this.item) {

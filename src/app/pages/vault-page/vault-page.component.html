@@ -1,12 +1,20 @@
 <main>
-    <app-vault-nav [username]="username" (settingsClicked)="toggleSettings()" />
+    <app-vault-nav [username]="username" (settingsClicked)="openSettings()" (allItemsClicked)="closeSettings()" />
 
     <div class="vault-content">
         @if (settings) {
             <app-vault-settings />
         } @else {
-            <app-vault-list (itemSelected)="itemSelected($event)" />
-            <app-vault-details [item]="selectedItem" (itemUpdated)="itemUpdated($event)" (itemDeleted)="itemDeleted($event)" />
+            @if (isMobile) {
+                @if (showDetails) {
+                    <app-vault-details [item]="selectedItem" (itemUpdated)="itemUpdated($event)" (itemDeleted)="itemDeleted($event)" (backClicked)="backToList()" />
+                } @else {
+                    <app-vault-list (itemSelected)="itemSelected($event)" />
+                }
+            } @else {
+                <app-vault-list (itemSelected)="itemSelected($event)" />
+                <app-vault-details [item]="selectedItem" (itemUpdated)="itemUpdated($event)" (itemDeleted)="itemDeleted($event)" />
+            }
         }
     </div>
 </main>

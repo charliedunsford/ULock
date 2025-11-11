@@ -1,9 +1,11 @@
+<app-header />
+
 <main>
     <div class="form-container">
         <form (ngSubmit)="submit()" (keydown.enter)="submit(); $event.preventDefault()">
             <div>
                 <h1 class="auth__text--large">{{ isSignup ? 'Sign up' : 'Sign in' }}</h1>
-                <p class="auth__text">
+                <p class="auth__text auth__link--toggle">
                     @if (isSignup) { Create an account or <a href="#" (click)="isSignup = false; errorMessage = ''; validationErrors = []; $event.preventDefault()">Sign In</a> }
                     @else { Sign in or <a href="#" (click)="isSignup = true; errorMessage = ''; validationErrors = []; $event.preventDefault()">Create an account</a> }</p>
             </div>

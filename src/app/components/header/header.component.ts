@@ -9,14 +9,23 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  menuOpen: boolean = false;
+
   constructor(private router: Router) { }
 
-  goToSignIn() {
+  goToLanding() : void {
+    this.router.navigate(['/']);
+  }
+
+  goToSignIn() : void{
     this.router.navigate(['/auth'], { queryParams: { form: 'signin' } });
   }
 
-  goToSignUp() {
+  goToSignUp() : void {
     this.router.navigate(['/auth'], { queryParams: { form: 'signup' } });
   }
 
+  toggleMenu() : void {
+    this.menuOpen = !this.menuOpen;
+  }
 }
