@@ -62,12 +62,19 @@ export class VaultPage implements OnInit, OnDestroy {
 
   itemUpdated(item: VaultItem): void {
     this.selectedItem = item;
-    this.vaultList.updateItem(item);
+    if (this.vaultList) {
+      this.vaultList.updateItem(item);
+    }
   }
 
   itemDeleted(id: number): void {
     this.selectedItem = undefined;
-    this.vaultList.deleteItem(id);
+    if (this.vaultList) {
+      this.vaultList.deleteItem(id);
+    }
+    if (this.isMobile) {
+      this.showDetails = false;
+    }
   }
 
   openSettings(): void {
@@ -76,5 +83,8 @@ export class VaultPage implements OnInit, OnDestroy {
 
   closeSettings(): void {
     this.settings = false;
+    if (this.isMobile) {
+      this.showDetails = false;
+    }
   }
 }
