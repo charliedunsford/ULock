@@ -79,12 +79,33 @@ export class VaultDetailsComponent {
 
   getInitials(title?: string): string {
     if (!title) return '?';
-
-    const words = title.trim().split(/\s+/);
+    
+    const trimmed = title.trim();
+    const words = trimmed.split(/\s+/);
+    const firstWord = words[0];
+    
+    if (firstWord && firstWord.length <= 2 && !/^[a-zA-Z0-9]/.test(firstWord)) {
+      return firstWord;
+    }
+    
     if (words.length >= 2) {
       return (words[0][0] + words[1][0]).toUpperCase();
     }
-
+    
     return title.substring(0, 2).toUpperCase() || '?';
+  }
+
+  getDisplayTitle(title?: string): string {
+    if (!title) return '';
+    
+    const trimmed = title.trim();
+    const words = trimmed.split(/\s+/);
+    const firstWord = words[0];
+    
+    if (firstWord && firstWord.length <= 2 && !/^[a-zA-Z0-9]/.test(firstWord)) {
+      return words.slice(1).join(' ');
+    }
+    
+    return title;
   }
 }
