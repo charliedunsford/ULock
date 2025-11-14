@@ -38,15 +38,14 @@ export class VaultListComponent implements OnInit {
   }
 
   add(): void {
-    this.vaultService.createVaultItem({
+    const newItem: VaultItem = {
       title: '',
       username: '',
       password_encrypted: '',
       url: ''
-    }).subscribe((newItem) => {
-      this.vaultItems.push(newItem);
-      this.selectItem(newItem);
-    });
+    };
+    this.vaultItems.push(newItem);
+    this.selectItem(newItem);
   }
 
   updateItem(updatedItem: VaultItem): void {
