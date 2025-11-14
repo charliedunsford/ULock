@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './vault-settings.component.css'
 })
 export class VaultSettingsComponent implements OnInit {
-  isDarkMode: boolean = false;
+  isDarkMode : boolean = false;
   
   ngOnInit(): void {
     this.isDarkMode = document.body.classList.contains('dark-mode');
@@ -16,12 +16,7 @@ export class VaultSettingsComponent implements OnInit {
   
   toggleDarkMode(event: Event): void {
     this.isDarkMode = (event.target as HTMLInputElement).checked;
-    if (this.isDarkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-    
+    document.body.classList.toggle('dark-mode', this.isDarkMode);
     localStorage.setItem('darkMode', this.isDarkMode.toString());
   }
 }

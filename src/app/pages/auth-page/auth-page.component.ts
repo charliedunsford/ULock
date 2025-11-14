@@ -25,9 +25,7 @@ export class AuthPage implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      this.isSignup = params['form'] === 'signup';
-    });
+    this.route.queryParams.subscribe(params => this.isSignup = params['form'] === 'signup');
   }
 
   validateForm(): boolean {
@@ -39,23 +37,13 @@ export class AuthPage implements OnInit {
       return false;
     }
 
-    if (this.username.length < 6) {
-      this.validationErrors.push('Username must be at least 6 characters long');
-    }
+    if (this.username.length < 6) this.validationErrors.push('Username must be at least 6 characters long');
 
     if (this.isSignup) {
-      if (this.password.length < 8) {
-        this.validationErrors.push('Password must be at least 8 characters');
-      }
-      if (!/[A-Z]/.test(this.password)) {
-        this.validationErrors.push('Password must contain at least one uppercase letter');
-      }
-      if (!/[0-9]/.test(this.password)) {
-        this.validationErrors.push('Password must contain at least one number');
-      }
-      if (!/[!@#$%^&*()_+\-\=\[\]{};':"\\|,.<>\/?]/.test(this.password)) {
-        this.validationErrors.push('Password must contain at least one special character');
-      }
+      if (this.password.length < 8) this.validationErrors.push('Password must be at least 8 characters');
+      if (!/[A-Z]/.test(this.password)) this.validationErrors.push('Password must contain at least one uppercase letter');
+      if (!/[0-9]/.test(this.password)) this.validationErrors.push('Password must contain at least one number');
+      if (!/[!@#$%^&*()_+\-\=\[\]{};':"\\|,.<>\/?]/.test(this.password)) this.validationErrors.push('Password must contain at least one special character');
     }
 
     return this.validationErrors.length === 0;
@@ -64,16 +52,13 @@ export class AuthPage implements OnInit {
   submit() {
     if (!this.validateForm()) return;
 
-    if (this.isSignup) {
-      this.authService.signup(this.username, this.password).subscribe({
-        next: () => this.router.navigate(['/vault']),
-        error: () => this.errorMessage = 'Sign up failed. Username may already be taken.'
-      });
-    } else {
-      this.authService.signin(this.username, this.password).subscribe({
-        next: () => this.router.navigate(['/vault']),
-        error: () => this.errorMessage = 'Sign in failed. Please check your credentials.'
-      });
-    }
+    const authCall = this.isSignup 
+      ? this.authService.signup(this.username, this.password)
+      : this.authService.signin(this.username, this.password);
+
+    authCall.subscribe({
+      next: () => this.router.navigate(['/vault']),
+      error: () => this.errorMessage = this.isSignup ? 'Sign up failed. Username may already be taken.' : 'Sign in failed. Please check your credentials.'
+    });
   }
 }

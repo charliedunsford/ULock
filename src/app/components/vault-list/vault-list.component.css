@@ -78,6 +78,8 @@
     width: 100%;
 }
 
+.selected,
+.selected:hover,
 .vault-list__add-button:hover {
     box-shadow: inset 0 0 20px var(--accent-color);
 }

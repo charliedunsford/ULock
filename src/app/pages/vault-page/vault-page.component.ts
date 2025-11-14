@@ -15,38 +15,23 @@ import { CommonModule } from '@angular/common';
   templateUrl: './vault-page.component.html',
   styleUrl: './vault-page.component.css'
 })
-export class VaultPage implements OnInit, OnDestroy {
+export class VaultPage implements OnInit {
   @ViewChild(VaultListComponent) vaultList!: VaultListComponent;
   
-  settings: boolean = false;
+  settings = false;
   selectedItem?: VaultItem;
-  username: string = '';
-  showDetails: boolean = false;
-  isMobile: boolean = false;
+  username = '';
+  showDetails = false;
+  isMobile = window.innerWidth <= 899;
 
   constructor(private titleService: Title, private authService: AuthService) {
     this.titleService.setTitle('Vault | ULock');
-    this.checkMobile();
   }
 
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user => this.username = user || '');
-
-    const savedTheme = localStorage.getItem('darkMode');
-    if (savedTheme === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-
-    window.addEventListener('resize', () => this.checkMobile());
-  }
-
-  ngOnDestroy(): void {
-    document.body.classList.remove('dark-mode');
-    window.removeEventListener('resize', () => this.checkMobile());
-  }
-
-  checkMobile(): void {
-    this.isMobile = window.innerWidth <= 899;
+    if (localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark-mode');
+    window.addEventListener('resize', () => this.isMobile = window.innerWidth <= 899);
   }
 
   itemSelected(item: VaultItem): void {
@@ -63,18 +48,23 @@ export class VaultPage implements OnInit, OnDestroy {
   itemUpdated(item: VaultItem): void {
     this.selectedItem = item;
     if (this.vaultList) {
-      this.vaultList.updateItem(item);
+      this.vaultList.vaultItems = this.vaultList.vaultItems.filter(i => i.id);
+      
+      const idx = this.vaultList.vaultItems.findIndex(i => i.id === item.id);
+      if (idx !== -1) {
+        this.vaultList.updateItem(item);
+      } else {
+        this.vaultList.vaultItems.push(item);
+        this.vaultList.vaultItems = [...this.vaultList.vaultItems];
+        this.vaultList.selectedItem = item;
+      }
     }
   }
 
   itemDeleted(id: number): void {
     this.selectedItem = undefined;
-    if (this.vaultList) {
-      this.vaultList.deleteItem(id);
-    }
-    if (this.isMobile) {
-      this.showDetails = false;
-    }
+    this.vaultList?.deleteItem(id);
+    if (this.isMobile) this.showDetails = false;
   }
 
   openSettings(): void {
@@ -83,8 +73,6 @@ export class VaultPage implements OnInit, OnDestroy {
 
   closeSettings(): void {
     this.settings = false;
-    if (this.isMobile) {
-      this.showDetails = false;
-    }
+    if (this.isMobile) this.showDetails = false;
   }
 }

@@ -115,12 +115,18 @@
     opacity: 1;
     transition: opacity 0.3s ease-out, transform 0.3s ease-out;
     text-wrap: nowrap;
-    visibility: visible;
 }
 
 .message.fade-out {
     opacity: 0;
     transform: translateY(-10px);
+}
+
+.message__container {
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes slideIn {
@@ -156,7 +162,7 @@
     }
 
     .item-display__edit {
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 1rem;
         margin-bottom: 2rem;
     }

@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { EncryptService } from './encrypt.service';
 
 describe('EncryptService', () => {

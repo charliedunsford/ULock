@@ -57,31 +57,21 @@ export class VaultDetailsComponent {
       return;
     }
 
-    if (this.vaultDetailForm.id) {
-      this.vaultService.updateVaultItem(this.vaultDetailForm).subscribe((item) => {
-        this.success = 'Vault item updated successfully!';
+    const serviceCall = this.vaultDetailForm.id 
+      ? this.vaultService.updateVaultItem(this.vaultDetailForm)
+      : this.vaultService.createVaultItem(this.vaultDetailForm);
+
+    serviceCall.subscribe((item) => {
+      this.success = this.vaultDetailForm.id ? 'Vault item updated successfully!' : 'Vault item created successfully!';
+      this.messageFading = false;
+      this.itemUpdated.emit(item);
+      
+      setTimeout(() => this.messageFading = true, 2500);
+      setTimeout(() => {
+        this.success = '';
         this.messageFading = false;
-        this.itemUpdated.emit(item);
-        
-        setTimeout(() => this.messageFading = true, 2500);
-        setTimeout(() => {
-          this.success = '';
-          this.messageFading = false;
-        }, 3000);
-      });
-    } else {
-      this.vaultService.createVaultItem(this.vaultDetailForm).subscribe((item) => {
-        this.success = 'Vault item created successfully!';
-        this.messageFading = false;
-        this.itemUpdated.emit(item);
-        
-        setTimeout(() => this.messageFading = true, 2500);
-        setTimeout(() => {
-          this.success = '';
-          this.messageFading = false;
-        }, 3000);
-      });
-    }
+      }, 3000);
+    });
   }
 
   delete(): void {

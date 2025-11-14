@@ -49,24 +49,16 @@ export class VaultService {
   }
 
   private async encryptItem(item: VaultItem): Promise<VaultItem> {
-    const encryptedPassword = item.password_encrypted
-      ? await this.encryptService.encrypt(item.password_encrypted)
-      : '';
-
     return {
       ...item,
-      password_encrypted: encryptedPassword
+      password_encrypted: item.password_encrypted ? await this.encryptService.encrypt(item.password_encrypted) : ''
     };
   }
 
   private async decryptItem(item: VaultItem): Promise<VaultItem> {
-    const decryptedPassword = item.password_encrypted
-      ? await this.encryptService.decrypt(item.password_encrypted)
-      : '';
-
     return {
       ...item,
-      password_encrypted: decryptedPassword
+      password_encrypted: item.password_encrypted ? await this.encryptService.decrypt(item.password_encrypted) : ''
     };
   }
 

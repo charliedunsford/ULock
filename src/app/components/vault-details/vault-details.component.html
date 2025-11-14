@@ -27,16 +27,19 @@
     </div>
 
     <div class="item-display__edit">
-    <div class="buttons">
+      <div class="buttons">
         <button type="submit" class="item-display__button">Save</button>
         <button type="button" class="item-display__button" (click)="delete()">Delete</button>
         <button class="item-display__button item-display__button--back" (click)="goBack()">Back</button>
-    </div>
+      </div>
 
-      <div class="message" [class.fade-out]="messageFading" [style.visibility]="error || success ? 'visible' : 'hidden'">
-        <p>{{ error || success || '&nbsp;' }}</p>
+      <div class="message__container">
+      @if (error || success) {
+        <div class="message" [class.fade-out]="messageFading">
+          <p>{{ error || success }}</p>
+        </div>
+      }
       </div>
     </div>
-
   </form>
 }
