@@ -32,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build -- --configuration production --base-href /ULock/
+        run: npm run build -- --configuration production --base-href /
 
       - name: Add .nojekyll
         run: touch dist/ulock/browser/.nojekyll
