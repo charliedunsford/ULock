@@ -1,15 +1,23 @@
 
-name: Deploy Angular to S3 + CloudFront
+name: Deploy Angular to GitHub Pages
 
 on:
   push:
     branches:
-      - master 
+      - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -18,29 +26,32 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build -- --configuration production
+        run: npm run build -- --configuration production --base-href /ULock/
 
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
+      - name: Add .nojekyll
+        run: touch dist/ulock/browser/.nojekyll
+
+      - name: Copy index.html to 404.html for SPA routing
+        run: cp dist/ulock/browser/index.html dist/ulock/browser/404.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          args: --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: 'dist/ulock/browser'
+          path: dist/ulock/browser
 
-      - name: Invalidate CloudFront cache
-        uses: chetan/invalidate-cloudfront-action@v2
-        env:
-          DISTRIBUTION: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          PATHS: "/*"
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

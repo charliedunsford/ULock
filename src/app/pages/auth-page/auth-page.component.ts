@@ -52,7 +52,7 @@ export class AuthPage implements OnInit {
   submit() {
     if (!this.validateForm()) return;
 
-    const authCall = this.isSignup 
+    const authCall = this.isSignup
       ? this.authService.signup(this.username, this.password)
       : this.authService.signin(this.username, this.password);
 
@@ -60,5 +60,12 @@ export class AuthPage implements OnInit {
       next: () => this.router.navigate(['/vault']),
       error: () => this.errorMessage = this.isSignup ? 'Sign up failed. Username may already be taken.' : 'Sign in failed. Please check your credentials.'
     });
+  }
+
+  tryDemo() {
+    this.isSignup = false;
+    this.username = AuthService.DEMO_USER;
+    this.password = AuthService.DEMO_PASS;
+    this.submit();
   }
 }

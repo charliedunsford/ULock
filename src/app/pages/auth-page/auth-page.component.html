@@ -20,6 +20,11 @@
             <button type="submit" class="header__link header__link--fancy">{{ isSignup ? 'Sign Up' : 'Sign In' }}</button>
         </form>
 
+        <div class="demo-section">
+            <span class="demo-section__divider">or</span>
+            <button type="button" class="demo-btn" (click)="tryDemo()">Try Demo</button>
+        </div>
+
         @if (errorMessage) {
             <div class="error-message">
                 {{ errorMessage }}

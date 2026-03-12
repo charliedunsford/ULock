@@ -112,6 +112,39 @@ button {
 	animation: slideDown 0.5s ease-out;
 }
 
+.demo-section {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	width: 34rem;
+	margin-top: 1rem;
+}
+
+.demo-section__divider {
+	font-size: 0.8rem;
+	font-weight: 500;
+	color: var(--primary-color);
+	white-space: nowrap;
+}
+
+.demo-btn {
+	flex: 1;
+	height: 2.6rem;
+	border: 1px solid var(--accent-color);
+	border-radius: 9999px;
+	background: transparent;
+	color: var(--primary-color);
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.demo-btn:hover {
+	background-color: var(--accent-color);
+	color: var(--secondary-color);
+}
+
 @keyframes slideDown {
 	from {
 		opacity: 0;
@@ -171,5 +204,9 @@ button {
 		width: 90vw;
 		transform: translateY(-50px);
 		animation: slideDown none;
+	}
+
+	.demo-section {
+		width: 90vw;
 	}
 }
