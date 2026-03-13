@@ -1,13 +1,47 @@
+<div align="center">
+
 # ULock
 
-## Who are we?
+A simple, secure password manager for desktop and mobile.
 
-ULock aims to provide a simple and easy password management experience for both desktop and mobile users.\
-Our mission is to make password management as little of a hastle as possible while still providing great security.
+**[ulock.app](https://ulock.app)**
 
-## Our Blueprint
+---
 
-ULock utilizes v1.0.0 of [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to structure commit messages.\
-[BEM](https://getbem.com/) is a naming methodology we use to keep our CSS organized and readable.\
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 17.\
-Incorporates [JSONWebToken](https://www.jwt.io/) for token session management.
+### Access your encrypted accounts anywhere
+
+<table>
+  <tr>
+    <td><img src="mob_ulockland.gif" height="340" alt="Mobile landing" /></td>
+    <td><img src="ulockland.gif" height="340" alt="Landing page" /></td>
+  </tr>
+</table>
+
+### Store passwords through an easy-to-use vault
+
+<table>
+  <tr>
+    <td><img src="mob_ulockvault.gif" height="340" alt="Mobile vault" /></td>
+    <td><img src="ulockvault.gif" height="340" alt="Vault" /></td>
+  </tr>
+</table>
+
+</div>
+
+---
+
+## Features
+
+- **Vault** — store, edit, and delete credentials
+- **Encryption** — passwords are encrypted client-side before leaving your device
+- **Demo mode** — try the app without creating an account
+- **Emoji icons** — use an emoji prefix as a custom vault entry icon
+- **Responsive** — works on desktop and mobile
+
+
+## Tech
+
+![Angular](https://img.shields.io/badge/Angular_17-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
